@@ -1,5 +1,4 @@
 node_modules
 docker
-.env
 dist
 client/build
