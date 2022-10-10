@@ -16,17 +16,18 @@ const PORT = process.env.PORT || 4000;
 export class App {
   constructor() {
     const app = express();
+    
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
+    app.use(morgan('tiny'));
+    app.use(cors());
+    app.use('/api', router);
     if (process.env.NODE_ENV !== 'development') {
       app.use(express.static(path.resolve(__dirname, '../client/build')));
       app.get('/*', (req: Request, res: Response) => {
         res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
       });
     }
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(bodyParser.json());
-    app.use(morgan('tiny'));
-    app.use(cors());
-    app.use('/api', router);
     
     app.listen(PORT, () => {
       logger.info(`The application is listening on port ${PORT}...`);
