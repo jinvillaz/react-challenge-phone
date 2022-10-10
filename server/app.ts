@@ -11,6 +11,8 @@ import path from 'path';
 const logger = log4js.getLogger('App');
 logger.level = 'debug';
 
+const PORT = process.env.PORT || 4000;
+
 export class App {
   constructor() {
     const app = express();
@@ -26,8 +28,8 @@ export class App {
     app.use(cors());
     app.use('/api', router);
     
-    app.listen(4000, () => {
-      logger.info('The application is listening on port 4000...');
+    app.listen(PORT, () => {
+      logger.info(`The application is listening on port ${PORT}...`);
     });
   }
 
