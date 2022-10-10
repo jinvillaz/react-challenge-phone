@@ -45,8 +45,11 @@
     "client:install": "cd client && yarn",
     "client:dev": "cd client && yarn start",
     "client:build": "cd client && yarn build",
-    "postinstall": "yarn run build && yarn run client:install && yarn run client:build && yarn run db:init",
+    "heroku-postbuild": "cd client && yarn install && yarn run build && yarn db:init",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "14.17.2"
   },
   "author": "Jhonatan Villanueva",
   "license": "ISC"
