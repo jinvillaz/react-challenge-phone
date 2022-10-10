@@ -1,7 +1,7 @@
 import { Contact, ContactBody } from './../../model/contact';
 import axios from 'axios';
 
-const baseURL = 'http://localhost:8000/api/contacts';
+const baseURL = 'http://localhost:4000/api/contacts';
 
 class ContactService {
 

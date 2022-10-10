@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { v4 as uuid } from 'uuid';
 import log4js from 'log4js';
 import { schema } from './schema-validator';
 import { db } from '../../database';

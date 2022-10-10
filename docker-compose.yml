@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   mongodb:
     image : davybello/mongo-replica-set:5.0.12
@@ -11,3 +11,22 @@ services:
       - 27017:27017
       - 27018:27018
       - 27019:27019
+    networks: 
+      - mongodbNetwork
+  react-app:
+    image: react-phone
+    build: 
+      context: .
+    container_name: react-phone
+    restart: always
+    ports:
+      - 4000:4000
+    depends_on:
+      - mongodb
+    # environment:
+    #   - DATABASE_URL="mongodb://mongodb:27017/react-phone"
+    networks: 
+      - mongodbNetwork
+networks: 
+  mongodbNetwork:
+    driver: bridge
